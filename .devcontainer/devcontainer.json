@@ -1,0 +1,43 @@
+{
+	"name": "Azure Functions & Python 3",
+	"dockerFile": "Dockerfile",
+	"forwardPorts": [ 7071 ],
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add settings
+			"settings": {
+				"[python]": {
+					"editor.formatOnType": true,
+					"editor.formatOnSaveMode": "file",
+					"editor.formatOnSave": true,
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"linting.pylintEnabled": true,
+					"linting.enabled": true,
+				},
+				"workbench.colorCustomizations": {
+					"titleBar.activeBackground": "#f5be44"
+				  }
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-azuretools.vscode-azurefunctions",
+				"ms-azuretools.vscode-docker",
+				"ms-azuretools.vscode-azurestorage",
+				"ms-python.python",
+				"ms-python.pylint",
+				"ms-python.black-formatter",
+				"Azurite.azurite",
+			]
+		}
+	},
+	
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "pip install -r requirements.txt",
+
+	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
